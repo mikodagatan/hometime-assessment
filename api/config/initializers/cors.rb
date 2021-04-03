@@ -1,7 +1,7 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    # Allow any website for entrypoint.
+    # Use * to allow any website for the entrypoint
     origins '*'
 
     resource '*',
