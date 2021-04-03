@@ -10,21 +10,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_03_083241) do
+ActiveRecord::Schema.define(version: 2021_04_03_085627) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "guests", force: :cascade do |t|
+    t.string "email", null: false
     t.string "first_name"
-    t.string "middle_name"
     t.string "last_name"
-    t.string "address"
-    t.bigint "user_id"
+    t.string "phone_numbers", array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["first_name", "middle_name", "last_name"], name: "index_guests_on_first_name_and_middle_name_and_last_name"
-    t.index ["user_id"], name: "index_guests_on_user_id"
+    t.index ["first_name", "last_name"], name: "index_guests_on_first_name_and_last_name"
+  end
+
+  create_table "reservations", force: :cascade do |t|
+    t.bigint "guest_id"
+    t.string "api_used"
+    t.integer "api_guest_id"
+    t.date "date_start"
+    t.date "date_end"
+    t.string "currency"
+    t.integer "status"
+    t.integer "nights"
+    t.integer "guests"
+    t.integer "adults"
+    t.integer "children"
+    t.integer "infants"
+    t.decimal "payout_price", precision: 10, scale: 2
+    t.decimal "security_price", precision: 10, scale: 2
+    t.decimal "total_price", precision: 10, scale: 2
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["api_used", "api_guest_id"], name: "index_reservations_on_api_used_and_api_guest_id"
+    t.index ["guest_id"], name: "index_reservations_on_guest_id"
   end
 
   create_table "users", force: :cascade do |t|
