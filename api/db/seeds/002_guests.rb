@@ -1,6 +1,7 @@
 require 'faker'
 
-
+# WHY: added complication to amount of phone numbers and guests 
+# to better test code.
 def create_phone_number
   numbers = []
   amount_of_numbers = rand(0..3)

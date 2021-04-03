@@ -1,5 +1,8 @@
 require 'faker'
 
+# NOTE: admin user has no distinction right now. Will change when roles are
+# introduced
+
 User.create(
   email: 'admin@email.com',
   password: 'admin123',
