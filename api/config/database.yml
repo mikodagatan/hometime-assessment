@@ -1,10 +1,10 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  host: api
-  username: hometime_postgres
-  password: hometime_pass
+  pool: 5
+  host: db
+  username: postgres
+  password: password
 
 development:
   <<: *default
