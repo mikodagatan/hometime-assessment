@@ -8,17 +8,23 @@
 docker-compose up
 ```
 
+### Custom Rails commands
+
+```bash
+rails db:reseed # recreates the database then seeds it.
+```
+
 ### Access Docker for commands
 
 ```bash
-docker-compose exec api bash #Rails API
-docker-compose exec app bash #ReactJS
+docker-compose exec api bash # Rails API
+docker-compose exec app bash # ReactJS
 ```
 
 ### Commands within Docker container (App)
 
 ```bash
-yarn (install node package when needed)
+yarn # install node package when needed
 yarn test
 yarn lint
 yarn lint-fix
