@@ -12,7 +12,7 @@ class CreateReservations < ActiveRecord::Migration[5.2]
       t.date            :date_end
 
       t.string          :currency
-      t.integer         :status # enum
+      t.string          :status
 
       t.integer         :nights
       t.integer         :guests

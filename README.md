@@ -30,6 +30,12 @@ yarn lint
 yarn lint-fix
 ```
 
+## Assumptions
+
+- Guest is independent of the User. User should be the "renter" of the place. However, the payload being received does not indicate any account from the user.
+- Saw an opened but unclosed bracket on the 'reservations' attribute. I will assume that 'reservations' contins all the other data.
+- API form validations is not important.
+
 ## Stack
 
 - Backend API Framework: [Rails](https://reactjs.org/)
