@@ -2,7 +2,7 @@ module GuestReservationsImporter
   class CreateGuest < ApplicationService
     attr_reader :attributes
 
-    # separated from Service to introduce API form validation 
+    # Note: separated from Service to introduce API form validation 
     # in the future.
 
     def initialize(attributes)

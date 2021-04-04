@@ -3,19 +3,17 @@ module GuestReservationsImporter
     attr_reader :data
 
     def initialize(data)
-      @data = data.deep_stringify_keys!
+      @data = data
     end
 
     def call
       # Note: uses dynamic class calling.
       # Note: creates a new instance of the payload class.
-      api_used = ClassifyPayload.call(@data)
-      puts "data: #{@data}"
+      api_used = ClassifyApi.call(@data)
 
-      payload = "GuestReservationsImporter::#{api_used.capitalize}Payload"
+      payload = "ImportPayloads::#{api_used.capitalize}Payload"
                 .constantize
                 .new(@data)
-      puts "payload: #{payload.inspect}"
       
       reservation = nil # have to be defined to be able to return it.
       ActiveRecord::Base.transaction do
@@ -24,22 +22,6 @@ module GuestReservationsImporter
       end
 
       reservation   
-    end
-
-    def find_status
-      status = @data['status'] || @data['reservation']['status_type']
-      case status
-      when 'accepted'
-        'reserved'
-      when 'declined'
-        status
-      when 'pending_payment'
-        status
-      when 'pending_acceptance'
-        'for_approval'
-      when 'pending_approval'
-        'for_approval'
-      end
     end
 
   end

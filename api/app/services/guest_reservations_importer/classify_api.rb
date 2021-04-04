@@ -1,9 +1,9 @@
 module GuestReservationsImporter
-  class ClassifyPayload < ApplicationService
+  class ClassifyApi < ApplicationService
     attr_reader :data
 
     def initialize(data)
-      @data = data
+      @data = data.deep_stringify_keys
       @keys = @data.keys
     end
 
@@ -15,17 +15,16 @@ module GuestReservationsImporter
       # Note: Add the name of the new api in the apis variable.
       # create a new Payload class for that api. Follow api1 and api2 format.
       apis.each do |api|
-        unique_fields = "GuestReservationsImporter::#{api.capitalize}Payload"
+        unique_fields = "ImportPayloads::#{api.capitalize}Payload"
                         .constantize
                         .unique_fields
-        puts unique_fields
         return api if is_payload(unique_fields)
       end
       nil
     end
 
-    def is_payload(payload)
-      payload.each do |field|
+    def is_payload(payload_fields)
+      payload_fields.each do |field|
         return true if @keys.include?(field)
       end
       false
