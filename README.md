@@ -8,6 +8,13 @@
 docker-compose up
 ```
 
+### Create and populate database
+
+```bash
+docker-compose exec api bash
+rails db:reseed #inside the api container
+```
+
 ### Custom Rails commands
 
 ```bash
