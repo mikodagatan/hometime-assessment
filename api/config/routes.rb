@@ -3,6 +3,6 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   namespace 'api', format: 'json' do
-    resources :guest_reservations, only: [:create]
+    resources :guest_reservations, only: [:index, :create]
   end
 end

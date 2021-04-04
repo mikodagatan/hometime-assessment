@@ -9,6 +9,32 @@ module GuestReservationsImporter
       @d = data['reservation']
     end
 
+    def self.payload_attributes
+      {
+        reservation: {
+          start_date: nil,
+          end_date: nil,
+          expected_payment_amount: nil,
+          guest_details: {
+            localized_description: nil,
+            number_of_adults: nil,
+            number_of_children: nil,
+            number_of_infants: nil
+          },
+          guest_email: nil,
+          guest_first_name: nil,
+          guest_id: nil,
+          guest_last_name: nil,
+          guest_phone_numbers: [],
+          listing_security_price_accurate: nil,
+          host_currency: nil,
+          number_of_guests: nil,
+          status_type: nil,
+          total_paid_amount_accurate: nil
+        }
+      }
+    end
+
     # Note:
     # was supposed to be:
     # [
@@ -47,7 +73,7 @@ module GuestReservationsImporter
         status: find_status, # from Service
         nights: @d['nights'],
         guests: @d['number_of_guests'].to_i,
-        adults: guest_details['number o'].to_i,
+        adults: guest_details['number_of_adults'].to_i,
         children: guest_details['number_of_children'].to_i,
         infants: guest_details['number_of_infants'].to_i,
         payout_price: @d['expected_payout_amount'].to_d,

@@ -44,14 +44,10 @@ yarn lint-fix
 - Querying Library: [React Query](https://react-query.tanstack.com/)
 - Linter: ESLint, Prettier, Husky
 
-## Code rules
-
-- remove all console logs in code.
-
 ## Styling rules
 
 - Don't Repeat Yourself (DRY)
-- If a theme if you find the need. Refer to [Material UI](https://material-ui.com/).
+- Create a theme if you find the need. Refer to [Material UI](https://material-ui.com/).
 - Use `Typography` to style your text.
 - Use `Box` as much as possible as your `div`.
 - Use `makeStyles` from Material UI when styling your component.

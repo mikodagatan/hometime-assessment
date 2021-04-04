@@ -1,7 +1,7 @@
-import { Typography, Box, Button } from '@material-ui/core';
+import Payload from './Payload';
 
-export default function Api2() {
-  const api1_payload = {
+export default function Api1() {
+  const payload = {
     reservation: {
       start_date: '2020-03-12',
       end_date: '2020-03-16',
@@ -26,25 +26,5 @@ export default function Api2() {
     },
   };
 
-  return (
-    <Box>
-      <Typography variant="h2">Api1 Payload</Typography>
-      <Box width="500px" display="flex" flexDirection="column" justify="center">
-        <Box display="flex" py={3}>
-          <Button variant="contained" color="primary" disableElevation>
-            Send To Api Endpoint
-          </Button>
-        </Box>
-
-        <pre
-          style={{
-            backgroundColor: '#eee',
-            padding: '1em',
-          }}
-        >
-          <code>{JSON.stringify(api1_payload, null, 2)}</code>
-        </pre>
-      </Box>
-    </Box>
-  );
+  return <Payload title="Api1" payload={payload} />;
 }

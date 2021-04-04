@@ -17,16 +17,17 @@ module GuestReservationsImporter
                 .new(@data)
       puts "payload: #{payload.inspect}"
       
+      reservation = nil # have to be defined to be able to return it.
       ActiveRecord::Base.transaction do
         guest = CreateGuest.call(payload.guest_attributes)
         reservation = CreateReservation.call(payload.reservation_attributes, guest)
       end
 
-      reservation      
+      reservation   
     end
 
     def find_status
-      status = @data['status'] || @data['status_type']
+      status = @data['status'] || @data['reservation']['status_type']
       case status
       when 'accepted'
         'reserved'
