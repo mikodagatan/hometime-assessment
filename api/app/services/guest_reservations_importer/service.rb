@@ -19,8 +19,10 @@ module GuestReservationsImporter
       
       ActiveRecord::Base.transaction do
         guest = CreateGuest.call(payload.guest_attributes)
-        CreateReservation.call(payload.reservation_attributes, guest)
+        reservation = CreateReservation.call(payload.reservation_attributes, guest)
       end
+
+      reservation      
     end
 
     def find_status

@@ -1,7 +1,7 @@
 require 'test_helper'
 require 'mock_helper'
 
-class GuestReservationsServiceTest < ActiveSupport::TestCase
+class GuestReservationsImporterTest < ActiveSupport::TestCase
   # Note: add new api name here
   # Add mock data in mock_helper.rb
   apis = ['api1', 'api2']
