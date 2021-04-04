@@ -1,20 +1,13 @@
 import { useState, useRef } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
-import { Tabs, Tab, Box, Divider, Drawer } from '@material-ui/core';
+import { Tabs, Tab, Box, Divider, Drawer, Typography } from '@material-ui/core';
 
-import { ReactComponent as Logo } from '../../assets/icons/logo.svg';
-import { ReactComponent as DashboardIcon } from '../../assets/icons/dashboard.svg';
-import { ReactComponent as DeviceManagerIcon } from '../../assets/icons/device-manager.svg';
-import { ReactComponent as ConfigureSensorsIcon } from '../../assets/icons/configure-sensors.svg';
-import { ReactComponent as AccountSettingsIcon } from '../../assets/icons/account-settings.svg';
+import Logo from '../assets/icons/logo.png';
+import { ReactComponent as DashboardIcon } from '../assets/icons/dashboard.svg';
+import { ReactComponent as DeviceManagerIcon } from '../assets/icons/device-manager.svg';
 
-import {
-  dashboardPath,
-  dashboardAccountSettingsPath,
-  dashboardConfigureSensorsPath,
-  dashboardDeviceManagerPath,
-} from '../../Routes';
+import { homePath, api1Path, api2Path } from '../Routes';
 
 // TODO: Find way to make this responsive.
 // There are packages that allow us to determine the element
@@ -86,24 +79,14 @@ export default function DashboardNav() {
 
   const navItems = [
     [
-      'Dashboard', //
-      dashboardPath,
+      'API 1',
+      api1Path,
       <DashboardIcon style={tabIconStyle.standard} key={0} />,
     ],
     [
-      'Device Manager', //
-      dashboardDeviceManagerPath,
+      'API 2',
+      api2Path,
       <DeviceManagerIcon style={tabIconStyle.standard} key={1} />,
-    ],
-    [
-      'Configure Sensors',
-      dashboardConfigureSensorsPath,
-      <ConfigureSensorsIcon style={tabIconStyle.configureSensors} key={2} />,
-    ],
-    [
-      'Account Settings',
-      dashboardAccountSettingsPath,
-      <AccountSettingsIcon style={tabIconStyle.standard} key={3} />,
     ],
   ];
 
@@ -115,9 +98,23 @@ export default function DashboardNav() {
         variant="permanent"
         anchor="left"
       >
-        <Box pt={4} pl={3} pb={6} display="flex">
-          <Logo />
+        <Box
+          py={4}
+          px={3}
+          display="flex"
+          flexDirection="column"
+          alignItems="center"
+        >
+          <Link to={homePath}>
+            <img src={Logo} alt="Hometime Logo" style={{ width: '100px' }} />
+          </Link>
+          <Box p={3} display="flex" justifyContent="center">
+            <Typography variant="h3" align="center">
+              Hometime Assessment
+            </Typography>
+          </Box>
         </Box>
+        <Divider />
         <Tabs
           classes={{ indicator: classes.indicator }}
           orientation="vertical"

@@ -1,58 +1,28 @@
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import MainLayout from './layouts/MainLayout';
-import DashboardLayout from './layouts/DashboardLayout';
 
-import ThemePage from './pages/ThemePage';
 import Home from './pages/Home';
-import Dashboard from './pages/dashboard/Dashboard';
-import About from './pages/About';
-import Login from './pages/Login';
+import Api1 from './pages/Api1';
+import Api2 from './pages/Api2';
 
 // Home
 export const homePath = '/';
-export const loginPath = '/login/';
-export const aboutPath = '/about/';
-
-// Dashboard
-export const dashboardPath = '/dashboard/';
-export const dashboardThemePath = '/dashboard/theme';
-export const dashboardDeviceManagerPath = '/dashboard/device-manager/';
-export const dashboardConfigureSensorsPath = '/dashboard/configure-sensors/';
-export const dashboardAccountSettingsPath = '/dashboard/account-settings/';
+export const api1Path = '/api1/';
+export const api2Path = '/api2/';
 
 const Routes = () => {
   return (
     <BrowserRouter>
-      <Switch>
-        <Route path="/dashboard/:path?" exact>
-          <DashboardLayout>
-            <Switch>
-              <Route path={dashboardPath} exact component={Dashboard} />
-              <Route path={dashboardThemePath} component={ThemePage} />
-              <Route path={dashboardDeviceManagerPath} component={ThemePage} />
-              <Route
-                path={dashboardConfigureSensorsPath}
-                component={ThemePage}
-              />
-              <Route
-                path={dashboardAccountSettingsPath}
-                component={ThemePage}
-              />
-            </Switch>
-          </DashboardLayout>
-        </Route>
-        <Route>
-          <Switch>
-            <MainLayout>
-              <Route path={homePath} exact component={Home} />
-              <Route path={aboutPath} component={About} />
-            </MainLayout>
-            <Route path={loginPath} component={Login} />
-          </Switch>
-        </Route>
-        <Route></Route>
-      </Switch>
+      <Route>
+        <Switch>
+          <MainLayout>
+            <Route path={homePath} exact component={Home} />
+            <Route path={api1Path} component={Api1} />
+            <Route path={api2Path} component={Api2} />
+          </MainLayout>
+        </Switch>
+      </Route>
     </BrowserRouter>
   );
 };

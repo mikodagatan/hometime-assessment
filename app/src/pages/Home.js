@@ -1,5 +1,9 @@
-import { Typography } from '@material-ui/core';
+import { Typography, Box } from '@material-ui/core';
 
 export default function Home() {
-  return <Typography variant="h2">Home</Typography>;
+  return (
+    <Box>
+      <Typography variant="h2">Assessment</Typography>
+    </Box>
+  );
 }

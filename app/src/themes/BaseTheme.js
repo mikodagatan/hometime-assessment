@@ -3,7 +3,7 @@ import { createMuiTheme } from '@material-ui/core/styles';
 // declare global css
 export const global = {
   colors: {
-    primary: '255,65,67',
+    primary: '51,100,90',
     success: '123,199,0',
     warning: '255,199,0',
     danger: '255,65,67',
